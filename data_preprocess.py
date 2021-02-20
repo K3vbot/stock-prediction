@@ -11,23 +11,16 @@ import os
 path = r"C:\Users\keval\Coding Projects\Stock_Market_Predictor\Stock Files"
 
 """ Creating Indivual Stock Files Using Pandas DataReader """
-
 def create_stockdir():
-    stocks_name_list = []
-    stocks_tick_list = []
-
     with open("Stocks.csv") as file:
         reader = csv.reader(file)
         header = next(reader)
         if header != None:
             for row in reader:
-                stocks_name_list.append(row[0])
-                stocks_tick_list.append(row[1])
-
-    for stock in stocks_tick_list:
-        df = DataReader(stock, data_source="yahoo", start="2011-01-01", end=datetime.now())
-        df.drop(["Adj Close"], axis=1)
-        df.to_csv(path + f"\{stock}.csv")
+                stock = row[1]
+                df = DataReader(stock, data_source="yahoo", start="2011-01-01", end=datetime.now())
+                df.drop(["Adj Close"], axis=1)
+                df.to_csv(path + f"\{stock}.csv")
 
 create_stockdir()
 
@@ -42,6 +35,6 @@ def get_stock_csv(listdir, stock_ticker):
     
     return df
 
-df = get_stock_csv(path, "AAPL")
-print(df.head())
+""" Data Preprocessing For 1 Day to 1 Day """
+
 
