@@ -8,7 +8,7 @@ import csv
 import os
 
 
-path = r"C:\Users\keval\Coding Projects\Stock_Market_Predictor\Stock Files"
+keval_path = r"C:\Users\keval\Coding Projects\Stock_Market_Predictor\Stock Files"
 
 """ Creating Indivual Stock Files Using Pandas DataReader """
 def create_stockdir():
@@ -24,7 +24,7 @@ def create_stockdir():
 
 create_stockdir()
 
-""" Iterating Over Every Single Stock File in the Folder """
+""" Functions To Obtain Data """
 def get_stock_csv(listdir, stock_ticker):
     stock_files = os.listdir(listdir)
 
@@ -36,5 +36,4 @@ def get_stock_csv(listdir, stock_ticker):
     return df
 
 """ Data Preprocessing For 1 Day to 1 Day """
-
 
